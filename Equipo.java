@@ -65,7 +65,7 @@ public class Equipo {
     protected void listarNombresCiclistas() {
         System.out.println("--- Integrantes del equipo " + nombreEquipo + " ---");
         for (Ciclista c : ciclistas) {
-            System.out.println("- " + c.getNombre());
+            System.out.println("- ID: " + c.getIdentificador() + " | Nombre: " + c.getNombre());
         }
     }
  
