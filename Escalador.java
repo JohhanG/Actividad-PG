@@ -10,20 +10,20 @@ public class Escalador extends Ciclista {
         this.gradoRampa = gradoRampa;
     }
  
-    // Métodos protegidos (getters y setters)
-    protected float getAceleracionPromedio() {
+    // Métodos getters y setters
+    public float getAceleracionPromedio() {
         return aceleracionPromedio;
     }
  
-    protected void setAceleracionPromedio(float aceleracionPromedio) {
+    public void setAceleracionPromedio(float aceleracionPromedio) {
         this.aceleracionPromedio = aceleracionPromedio;
     }
  
-    protected float getGradoRampa() {
+    public float getGradoRampa() {
         return gradoRampa;
     }
  
-    protected void setGradoRampa(float gradoRampa) {
+    public void setGradoRampa(float gradoRampa) {
         this.gradoRampa = gradoRampa;
     }
  

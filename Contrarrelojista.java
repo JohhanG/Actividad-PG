@@ -8,12 +8,12 @@ public class Contrarrelojista extends Ciclista {
         this.velocidadMaxima = velocidadMaxima;
     }
  
-    // Métodos protegidos (getters y setters)
-    protected double getVelocidadMaxima() {
+    // Métodos getters y setters
+    public double getVelocidadMaxima() {
         return velocidadMaxima;
     }
  
-    protected void setVelocidadMaxima(double velocidadMaxima) {
+    public void setVelocidadMaxima(double velocidadMaxima) {
         this.velocidadMaxima = velocidadMaxima;
     }
  

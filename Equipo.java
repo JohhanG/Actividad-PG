@@ -15,46 +15,57 @@ public class Equipo {
         this.ciclistas = new ArrayList<>();
     }
  
-    // Métodos protegidos requeridos por el enunciado
-    protected String getNombreEquipo() {
+    // Métodos getters y setters
+    public String getNombreEquipo() {
         return nombreEquipo;
     }
  
-    protected void setNombreEquipo(String nombreEquipo) {
+    public void setNombreEquipo(String nombreEquipo) {
         this.nombreEquipo = nombreEquipo;
     }
  
-    protected String getPais() {
+    public String getPais() {
         return pais;
     }
  
-    protected void setPais(String pais) {
+    public void setPais(String pais) {
         this.pais = pais;
     }
  
-    protected static int getTiempoTotalEquipo() {
+    public static int getTiempoTotalEquipo() {
         return tiempoTotalEquipo;
     }
  
-    protected static void setTiempoTotalEquipo(int tiempoTotal) {
+    public static void setTiempoTotalEquipo(int tiempoTotal) {
         tiempoTotalEquipo = tiempoTotal;
-    
     }
    
-    protected List<Ciclista> getCiclistas() {
+    public List<Ciclista> getCiclistas() {
         return ciclistas;
     }
 
-    protected void setCiclistas(List<Ciclista> ciclistas) {
+    public void setCiclistas(List<Ciclista> ciclistas) {
         this.ciclistas = ciclistas;
+        calcularTotalTiempos();
     }
 
-    protected void añadirCiclista(Ciclista ciclista) {
+    // Añadir ciclista y recalcular tiempo total acumulado
+    public void añadirCiclista(Ciclista ciclista) {
         ciclistas.add(ciclista);
         calcularTotalTiempos();
     }
 
-    protected void calcularTotalTiempos() {
+    // Métodos alias para compatibilidad
+    public void anadirCiclista(Ciclista ciclista) {
+        añadirCiclista(ciclista);
+    }
+
+    public void aadirCiclista(Ciclista ciclista) {
+        añadirCiclista(ciclista);
+    }
+
+    // Calcula el total de tiempos de todos los ciclistas del equipo
+    public void calcularTotalTiempos() {
         int total = 0;
         for (Ciclista c : ciclistas) {
             total += c.getTiempoAcumulado();
@@ -62,33 +73,41 @@ public class Equipo {
         tiempoTotalEquipo = total;
     }
  
-    protected void listarNombresCiclistas() {
+    // Listar los nombres e identificadores de los integrantes
+    public void listarNombresCiclistas() {
         System.out.println("--- Integrantes del equipo " + nombreEquipo + " ---");
         for (Ciclista c : ciclistas) {
-            System.out.println("- " + c.getNombre());
+            System.out.println("- ID: " + c.getIdentificador() + " | Nombre: " + c.getNombre());
         }
     }
  
-    protected void imprimirDatosEquipo() {
+    // Imprimir datos generales del equipo
+    public void imprimirDatosEquipo() {
         System.out.println("================================");
         System.out.println("Equipo: " + nombreEquipo);
         System.out.println("País: " + pais);
         System.out.println("Tiempo total acumulado: " + tiempoTotalEquipo + " minutos");
         System.out.println("================================");
     }
- 
-    protected void imprimirDatosCiclistaPorId(int id) {
-        boolean encontrado = false;
+
+    // Busca un ciclista por su identificador. Si no existe, lanza CiclistaNoEncontradoException
+    public Ciclista buscarCiclista(int id) throws CiclistaNoEncontradoException {
         for (Ciclista c : ciclistas) {
             if (c.getIdentificador() == id) {
-                System.out.println("\n--- Ciclista Encontrado ---");
-                c.imprimirDatos();
-                encontrado = true;
-                break;
+                return c;
             }
         }
-        if (!encontrado) {
-            System.out.println("\n[Aviso] No existe un ciclista con el identificador: " + id);
+        throw new CiclistaNoEncontradoException(id);
+    }
+ 
+    // Imprime los datos del ciclista buscado por ID utilizando la excepción personalizada
+    public void imprimirDatosCiclistaPorId(int id) {
+        try {
+            Ciclista c = buscarCiclista(id);
+            System.out.println("\n--- Ciclista Encontrado ---");
+            c.imprimirDatos();
+        } catch (CiclistaNoEncontradoException e) {
+            System.out.println("\n[Aviso] " + e.getMessage());
         }
     }
 }

@@ -20,7 +20,7 @@ public class Main {
         equipo.añadirCiclista(e1);
         equipo.añadirCiclista(c1);
 
-        // 4. Menú
+        // 4. Menú interactivo
         int opcion = -1;
         do {
             System.out.println("\n===== MENÚ =====");
