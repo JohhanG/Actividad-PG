@@ -10,20 +10,20 @@ public class Velocista extends Ciclista {
         this.velocidadPromedioSprint = velocidadPromedioSprint;
     }
  
-    // Métodos protegidos (getters y setters)
-    protected double getPotenciaPromedio() {
+    // Métodos getters y setters
+    public double getPotenciaPromedio() {
         return potenciaPromedio;
     }
  
-    protected void setPotenciaPromedio(double potenciaPromedio) {
+    public void setPotenciaPromedio(double potenciaPromedio) {
         this.potenciaPromedio = potenciaPromedio;
     }
  
-    protected double getVelocidadPromedioSprint() {
+    public double getVelocidadPromedioSprint() {
         return velocidadPromedioSprint;
     }
  
-    protected void setVelocidadPromedioSprint(double velocidadPromedioSprint) {
+    public void setVelocidadPromedioSprint(double velocidadPromedioSprint) {
         this.velocidadPromedioSprint = velocidadPromedioSprint;
     }
  
